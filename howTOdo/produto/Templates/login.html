@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "model-header.html" %}
+</head>
+<body>
+    <h1>Login</h1>
+
+    <form action="submit" method="POST">{% csrf_token %}
+        <div align="center">
+            <label>Usuário:</label>
+            <input type="text" name="username">
+            <label>Senha:</label>
+            <input type="password" name="password">
+            <button class="button button5" type="submit">Entar</button>
+        </div>
+    </form>
+    <br>
+    {% for message in messages %}
+        <div align="center">
+            <strong>Erro:</strong> {{ message }}
+        </div>
+    {% endfor %}
+
+    {% include "model-footer.html" %}
+</body>
+</html>

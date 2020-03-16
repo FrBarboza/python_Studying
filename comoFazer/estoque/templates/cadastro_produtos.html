@@ -1,0 +1,17 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+    <b><h2>Produtos</h2></b>
+    <a href="estoque/">
+        <button class="button button5">Novo Cadastro</button>
+    </a>
+    <ul style="font-size: 18px">
+        {% for estoque in estoques %}
+        <li>
+            {{ estoque.nome }} - {{ estoque.nota }} - {{ estoque.tempo_validade }} - {{ estoque.get_data_criacao }}
+            ( <a href="cadastro/?id={{ estoque.id }}">Editar</a>
+            / <a href="cadastro/delete/{{ estoque.id }}/">Excluir</a> )
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

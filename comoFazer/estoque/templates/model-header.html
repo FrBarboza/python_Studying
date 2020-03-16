@@ -1,0 +1,16 @@
+{% load static %}
+
+<meta charset="UTF-8">
+<title>hTd - howTOdo </title>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"
+
+<div align="left">
+    <p>Usuário: {{ request.user }}
+        <span style="float:right;">
+                <a href="/logout">logout</a>
+            </span>
+    </p>
+</div>
+
+<h1>hTd - howTOdo</h1>

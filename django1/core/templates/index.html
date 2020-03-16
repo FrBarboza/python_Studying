@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" >
+</head>
+<body>
+    <center>Hello eu sou o Django</center>
+    <br/><br/><br/>
+
+    <p><h2>Texto recebido da View {{ curso }}</h2></p>
+    <br/><br/><br/>
+    <img src="{% static 'images/imagem.jpg'%}"  width="160" height="145" >
+    <p><h3>Outro texto: {{ outro }}</h3></p>
+    <br/><br/><br/>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produto in produtos %}
+            <tr>
+                <td><a href="{% url 'produto' produto.id %}">{{ produto.nome }}</a></td>
+                <td>{{ produto.preco }}</td>
+                <td>{{ produto.estoque }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button type="button" onclick="mostrar({{ produto.nome }})">Click Aqui</button>
+
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

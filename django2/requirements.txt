@@ -1,0 +1,17 @@
+asgiref==3.2.3
+beautifulsoup4==4.8.2
+Django==3.0.4
+django-bootstrap4==1.1.1
+django-stdimage==5.0.2
+gunicorn==20.0.4
+mysql==0.0.2
+mysqlclient==1.4.6
+Pillow==7.0.0
+progressbar2==3.50.0
+PyMySQL==0.9.3
+python-utils==2.4.0
+pytz==2019.3
+six==1.14.0
+soupsieve==2.0
+sqlparse==0.3.1
+whitenoise==5.0.1
