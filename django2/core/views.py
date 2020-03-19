@@ -3,18 +3,35 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 
-from . import forms
+
+from .forms import ContatoForm, ProdutoModelForm, EscreverForm
+from .models import Produto
+
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'index.html', context)
+
+
+def indexcrispy(request):
+    context = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'indexcrispy.html', context)
+
+
+class HttpRedirect(object):
+    pass
 
 
 def contato(request):
-    form = forms.ContatoForm(request.POST or None)
+    form = ContatoForm(request.POST or None)
 
-    if str(request.method == 'POST'):
+    if str(request.method) == 'POST':
         if form.is_valid():
             # Para TESTAR
             # nome = form.cleaned_data['nome']
@@ -32,9 +49,11 @@ def contato(request):
             form.send_mail()
 
             messages.success(request, 'E-mail enviado com sucesso!')
-            form = forms.ContatoForm()
+            form = ContatoForm()
         else:
             messages.error(request, 'Erro ao enviar e-mail')
+    # else:
+    #     messages.error(request, 'Method GET foi chamado')
 
     context = {
         'form': form
@@ -42,8 +61,64 @@ def contato(request):
     return render(request, 'contato.html', context)
 
 
+def escrever(request):
+    form = EscreverForm(request.POST or None)
+
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            # Para TESTAR
+            nome = form.cleaned_data['nome']
+            email = form.cleaned_data['email']
+            assunto = form.cleaned_data['assunto']
+            mensagem = form.cleaned_data['mensagem']
+
+            print('Mensagem enviada')
+            print('Nome: {}'.format(nome))
+            print(f'E-mail: {email}')
+            print(f'Assunto: {assunto}')
+            print(f'Mensagem: {mensagem}')
+
+            # Para Enviar
+            # form.send_mail()
+
+            messages.success(request, 'A1 - E-mail escrever com sucesso!')
+            form = EscreverForm(None)
+            print(form)
+        else:
+            messages.error(request, 'Erro contato1 enviar e-mail')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'escrever.html', context)
+
+
 def produto(request):
-    return render(request, 'produto.html')
+    if str(request.method) == 'POST':
+        form = ProdutoModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Para testar e imprimir no console
+            # prod = form.save(commit=False)
+
+            # print(f'Nome: {prod.nome}')
+            # print(f'Preço: {prod.preco}')
+            # print(f'Estoque: {prod.estoque}')
+
+            # print(f'Imagem: {prod.image}')
+
+            form.save()
+
+            messages.success(request, 'Produto salvo com sucesso!')
+            form = ProdutoModelForm()
+        else:
+            messages.error(request, 'Erro ao salvar o produto.')
+    else:
+        form = ProdutoModelForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'produto.html', context)
 
 
 def error404(request, ex):

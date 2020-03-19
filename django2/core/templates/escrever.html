@@ -5,7 +5,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Produto</title>
+    <title>Escrever</title>
     {% bootstrap_css %}
 </head>
 <body>
@@ -13,39 +13,38 @@
 
         <div class="row justify-content-center">
             <div class="col-6">
-                <h1 class="mt-2">Produto</h1>
+                <h1 class="mt-2">Escrever</h1>
                 <hr class="mt-0 mb-4">
 
                 {% bootstrap_messages %}
 
                 {% block content %}
-                    <form action="{% url 'produto' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+                    <form action="{% url 'escrever' %}" method="post" class="form" autocomplete="off">
                         {% csrf_token %}
 
-                        {{ form.nome|as_crispy_field }}
-
                         <div class="row">
-
                             <div class="col-6">
-                                {{ form.preco|as_crispy_field }}
+                                {{ form.nome|as_crispy_field }}
                             </div>
                             <div class="col-6">
-                                {{ form.estoque|as_crispy_field }}
+                                {{ form.email|as_crispy_field }}
                             </div>
-
                         </div>
+                        {{ form.assunto|as_crispy_field }}
+                        {{ form.mensagem|as_crispy_field }}
 
-                        {{ form.image|as_crispy_field }}
+<!--                        {{ form|crispy }}-->
+<!--                        -->
+<!--                        {% crispy form %}-->
 
                         {% buttons %}
-                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                            <button type="submit" class="btn btn-success">Enviar Mensagem</button>
                         {% endbuttons %}
                     </form>
                 {% endblock %}
             </div>
         </div>
     </div>
-
 {% bootstrap_javascript jquery='full' %}
 </body>
 </html>
