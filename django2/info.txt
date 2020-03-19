@@ -64,6 +64,18 @@ DATABASES = {
     }
 }
 
+# PostgreSQL com Heroku
+DATABASES = {
+    'default': dj_database_url.config()
+}
+
+# Install local
+pip install dj_database_url psycopg2-binary
+
+# Gerar requirements
+pip freeze > requirements.txt
+
+
 # user: root
 # password: Admin123
 
@@ -107,5 +119,11 @@ GIT:
 git init
 
 git remote add origin git@github.com:xxxxxxxxx/yyyyyyyyyy.git
+
+git add .
+git commit - m
+
+git push -u origin master
+
 
 

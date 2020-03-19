@@ -1,7 +1,7 @@
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 from .forms import ContatoForm, ProdutoModelForm, EscreverForm
@@ -83,7 +83,7 @@ def escrever(request):
 
             messages.success(request, 'A1 - E-mail escrever com sucesso!')
             form = EscreverForm(None)
-            print(form)
+            return HttpResponseRedirect("/escrever/")
         else:
             messages.error(request, 'Erro contato1 enviar e-mail')
 
@@ -94,31 +94,36 @@ def escrever(request):
 
 
 def produto(request):
-    if str(request.method) == 'POST':
-        form = ProdutoModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            # Para testar e imprimir no console
-            # prod = form.save(commit=False)
+    print(request.user)
+    if str(request.user) != 'AnonymousUser':
+        if str(request.method) == 'POST':
+            form = ProdutoModelForm(request.POST, request.FILES)
+            if form.is_valid():
+                # Para testar e imprimir no console
+                # prod = form.save(commit=False)
 
-            # print(f'Nome: {prod.nome}')
-            # print(f'Preço: {prod.preco}')
-            # print(f'Estoque: {prod.estoque}')
+                # print(f'Nome: {prod.nome}')
+                # print(f'Preço: {prod.preco}')
+                # print(f'Estoque: {prod.estoque}')
 
-            # print(f'Imagem: {prod.image}')
+                # print(f'Imagem: {prod.image}')
 
-            form.save()
+                form.save()
 
-            messages.success(request, 'Produto salvo com sucesso!')
-            form = ProdutoModelForm()
+                messages.success(request, 'Produto salvo com sucesso!')
+                form = ProdutoModelForm()
+                return HttpResponseRedirect('/produto/')
+            else:
+                messages.error(request, 'Erro ao salvar o produto.')
         else:
-            messages.error(request, 'Erro ao salvar o produto.')
-    else:
-        form = ProdutoModelForm()
+            form = ProdutoModelForm()
 
-    context = {
-        'form': form
-    }
-    return render(request, 'produto.html', context)
+        context = {
+            'form': form
+        }
+        return render(request, 'produto.html', context)
+    else:
+        return redirect('indexcrispy')
 
 
 def error404(request, ex):

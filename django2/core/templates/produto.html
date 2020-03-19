@@ -19,6 +19,7 @@
                 {% bootstrap_messages %}
 
                 {% block content %}
+
                     <form action="{% url 'produto' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
                         {% csrf_token %}
 

@@ -1,3 +1,4 @@
+{% load static %}
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 
@@ -5,9 +6,11 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Produto</title>
+
     {% bootstrap_css %}
-</head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>s
 <body>
     <div class="container">
         <div class="row justify-content-center">
