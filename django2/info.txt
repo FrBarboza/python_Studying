@@ -7,7 +7,7 @@ pip install django whitenoise gunicorn django-bootstrpa4 PyMySQL django-stdimage
 Upgrade Pip (Python)
 python -m pip install --upgrade pip
 
-Instalar MySQL
+Instalar biblioteca MySQL para o Python
 Ubuntu
 sudo apt-get install libmysqlclient-dev python3-dev
 
@@ -69,7 +69,7 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
-# Install local
+# Install local (MySql) para usar configuração no Heroku
 pip install dj_database_url psycopg2-binary
 
 # Gerar requirements
@@ -78,6 +78,10 @@ pip freeze > requirements.txt
 
 # user: root
 # password: Admin123
+
+# DJANGO usando crispy
+pip install django-crispy-forms
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
