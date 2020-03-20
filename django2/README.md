@@ -3,24 +3,21 @@
 #### Criando um Virtual Python Environment
  
 > Criar diretório ou pasta
->
 ```bash
 python -m venv <nome da virtual env>
 ```
 #### **Usando Virtual Env (venv)**
 >Ativando o VirtualEnv
->
 ```git
 "nome da pasta"/Scripts/activate
 ```
 >Desativando o VirtualEnv
->
 ```   
 "nome da pasta"/Scripts/deactivate
 ```
 #### Instalar django com bootstrap e outros
 ```bash
-    pip install django whitenoise gunicorn django-bootstrpa4 PyMySQL django-stdimage
+pip install django whitenoise gunicorn django-bootstrpa4 PyMySQL django-stdimage
 ```
 #### Upgrade Pip (Python)
 ```bash
@@ -38,10 +35,10 @@ brew install mysql-connector-c
 > Windows
 > >Instalando o servidor MySQL no Windows, as bibliotecas
     já estarão instaladas.
->
+
 [Download MySQL Install](https://dev.mysql.com/downloads/mysql/)
   
-####Usando o GIT
+#### Usando o GIT
 > Na pasta do projeto criar o controle Git
 >
 ```git
@@ -55,20 +52,20 @@ git init
 git add .
 ``` 
 > O mais preciso e real das mudanças que estão sendo comitadas.
-```
+```git
 git commit - m "Descrição do commit"
 ```
 > Atualizar o remote (repositório Git no GitHub)
-```
+```git
 git push -u origin master
-```        
+```     
 > Adicionar repositorio Origin ao repositorio GitHub
 > pegar o ssh ou https no repositório.
-```
+```git
 git remote add origin git@github.com:xxxxxxxxx/yyyyyyyyyy.git
 ```
 > Para verificar o repositorio remoto ativo
-```
+```git
 git remote -v
 ```
 
@@ -76,15 +73,15 @@ git remote -v
 
 > ##### Criar projeto (para não criar estrutura use o . (ponto) 
 > ##### após o nome do projeto ( raiz do projeto ))
-```
+```django
 django-admin startproject <nome do project> .
-```    
-> ##### Criar app (deve-se estar dentro da pasta do projeto)
 ```
+> ##### Criar app (deve-se estar dentro da pasta do projeto)
+```django
 django-admin startapp <nome do app>
 ```
 > ##### Install local (MySql) para usar configuração no Heroku
-```
+```bash
 pip install dj_database_url psycopg2-binary
 ```
 > ##### Gerar requirements
