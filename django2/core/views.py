@@ -24,10 +24,6 @@ def indexcrispy(request):
     return render(request, 'indexcrispy.html', context)
 
 
-class HttpRedirect(object):
-    pass
-
-
 def contato(request):
     form = ContatoForm(request.POST or None)
 
