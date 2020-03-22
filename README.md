@@ -87,11 +87,20 @@ django-admin startapp <nome do app>
 ```
 pip install dj_database_url psycopg2-binary
 ```
-> ##### Gerar requirements
+> #### **Bootstrap4 Django**
+>> Instalar 
+```bash
+pip install django-bootstrap4
+```
+>> Importar no template
+```html
+{% load bootstrap4 %}
+```
+> ##### **Gerar requirements**
 ```bash
 pip freeze > requirements.txt
 ```
-> ##### Configurar Settings
+> ##### **Configurar Settings**
 ```django
 INSTALLED_APPS = [
 # Deve ter todas as aplicacoes
@@ -133,6 +142,19 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '3306',
+    }
+}
+```
+> PostgreSQL
+```django
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fusion',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 ```

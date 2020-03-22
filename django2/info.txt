@@ -130,4 +130,9 @@ git commit - m
 git push -u origin master
 
 
+PostgreSQL
+USER: superuser
+PASS: Admin123
+
+
 

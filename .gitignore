@@ -6,6 +6,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Arquivo de Rascunho do projeto
+django2/info.txt
+info.txt
+
+
 # Download folder
 Download/
 
