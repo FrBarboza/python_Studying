@@ -12,6 +12,7 @@ info.txt
 
 # Download folder
 Download/
+flask/Auxiliar
 
 # C extensions
 *.so
