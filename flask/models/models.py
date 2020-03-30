@@ -24,3 +24,16 @@ class HotelModel(database.Model):
             'diaria': self.diaria,
             'cidade': self.cidade
         }
+
+    @classmethod
+    def find_hotel(cls, hotel_id):
+        hotel = cls.query.filter_by(hotel_id=hotel_id).first()
+        # como se fosse um Select no SQLAlchemy
+        # SELECT * FROM hoteis WHERE hotel_id = $hotel_id - SQLAlchemy
+        if hotel:
+            return hotel
+        return None
+
+    def save_hotel(self):
+        database.session.add(self)
+        database.session.commit()
