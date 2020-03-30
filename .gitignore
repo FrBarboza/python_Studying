@@ -13,6 +13,7 @@ info.txt
 # Download folder
 Download/
 flask/Auxiliar
+teste_database/
 
 # C extensions
 *.so
