@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "P:\\Estudos\\.virtualEnv\\Py382-Flask\\Scripts\\python.exe",
+    "python.pythonPath": "C:\\Program Files\\Python38\\python.exe",
     "python.linting.pylintArgs": [
         "--load-plugins",
         "pylint-flask"

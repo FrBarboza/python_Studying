@@ -27,13 +27,23 @@ class HotelModel(database.Model):
 
     @classmethod
     def find_hotel(cls, hotel_id):
-        hotel = cls.query.filter_by(hotel_id=hotel_id).first()
-        # como se fosse um Select no SQLAlchemy
+        # como se fosse um Select no SQLAlchemy 
         # SELECT * FROM hoteis WHERE hotel_id = $hotel_id - SQLAlchemy
+        hotel = cls.query.filter_by(hotel_id=hotel_id).first()
         if hotel:
             return hotel
         return None
 
     def save_hotel(self):
         database.session.add(self)
+        database.session.commit()
+
+    def update_hotel(self, nome, estrelas, diaria, cidade):
+        self.nome = nome
+        self.estrelas = estrelas
+        self.diaria = diaria
+        self.cidade = cidade
+
+    def delete_hotel(self):
+        database.session.delete(self)
         database.session.commit()
