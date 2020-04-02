@@ -2,7 +2,7 @@ from flask_restful import Resource, reqparse
 from models.user import UserModel
 from werkzeug.security import safe_str_cmp
 from flask_jwt_extended import create_access_token, jwt_required, get_raw_jwt
-from backlist import BLACKLIST
+from blacklist import BLACKLIST
 
 
 attribute = reqparse.RequestParser()
@@ -65,5 +65,6 @@ class UserLogout(Resource):
     @jwt_required
     def post(self):
         jwt_id = get_raw_jwt()['jti']  # JWT Token Identifier (jti)
+        Print(jwt_id)
         BLACKLIST.add(jwt_id)
         return {'message': 'Logged out successfully.'}, 200

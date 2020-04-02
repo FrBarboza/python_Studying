@@ -3,7 +3,7 @@ from flask_restful import Api
 from resources.hotel import Hoteis, Hotel
 from resources.user import User, UserRegister, UserLogin, UserLogout
 from flask_jwt_extended import JWTManager
-from backlist import BLACKLIST
+from blacklist import BLACKLIST
 
 
 app = Flask(__name__)
