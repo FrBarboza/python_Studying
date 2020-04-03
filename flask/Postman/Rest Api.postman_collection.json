@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "2b91dab4-1c98-40e2-97f8-01e13c70fb74",
+		"name": "Rest Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/hoteis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/hoteis",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hoteis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hoteis/{hotel_id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:5000/hoteis/delta1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hoteis",
+						"delta1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hoteis/{hotel_id}",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODU2ODEyODIsIm5iZiI6MTU4NTY4MTI4MiwianRpIjoiZWFhMGRlM2QtMGJiOC00OGJmLWEzYzAtNjYzNjZjZGE2MDRjIiwiZXhwIjoxNTg1NjgyMTgyLCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.WLxARaKTnXr0NRJiJOA4di-PlcO5DFDL_TVbJjUZX7I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Echo Hotel\",\n    \"estrelas\": 4.1,\n    \"diaria\": 320.34,\n    \"cidade\": \"Piracicaba\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/hoteis/echo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hoteis",
+						"echo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hoteis/{hotel_id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODU3NzEwMzksIm5iZiI6MTU4NTc3MTAzOSwianRpIjoiNzhmMDM5NjYtOTU2Zi00NzU3LTg0NDctNmI1ZjE4MWJlMzI4IiwiZXhwIjoxNTg1NzcxOTM5LCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.bNRCRfFeWyC-MznsxWYDr6d3L38AkDU8eHYRJreQEyA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Echo Hotel\",\n    \"estrelas\": \"4.1\",\n    \"diaria\": \"380.34\",\n    \"cidade\": \"São Luiz do Paraitinga\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/hoteis/echo1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hoteis",
+						"echo1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hoteis/{hotel_id}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODU3NTYwODQsIm5iZiI6MTU4NTc1NjA4NCwianRpIjoiYmNhNzM2ZTMtMDFiOC00MTQ3LTgzYzItOWM2OGI2YjI5NWU2IiwiZXhwIjoxNTg1NzU2OTg0LCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.LNiozEOxByo_g2WtDdXl1LPFGsvC3NU-2G7eKGBrEZE",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:5000/hoteis/alpha",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hoteis",
+						"alpha"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:5000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODU3NzEwMzksIm5iZiI6MTU4NTc3MTAzOSwianRpIjoiNzhmMDM5NjYtOTU2Zi00NzU3LTg0NDctNmI1ZjE4MWJlMzI4IiwiZXhwIjoxNTg1NzcxOTM5LCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.bNRCRfFeWyC-MznsxWYDr6d3L38AkDU8eHYRJreQEyA",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:5000/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cadastro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\": \"francisco\",\n\t\"password\": \"teste123\"\n}\n"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/cadastro",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"cadastro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuario/{user_id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:5000/usuario/{user_id}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"usuario",
+						"{user_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuario/{user_id}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODU3NzE5ODgsIm5iZiI6MTU4NTc3MTk4OCwianRpIjoiYThlM2EyYzAtZDIyYi00MWY4LWI3NGEtMjI1MmZkZmM4MGI2IiwiZXhwIjoxNTg1NzcyODg4LCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.pXcv0zPs7nVu8619T9KHSOd33aWc-OSTd5UmdlKPDg8",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://127.0.0.1:5000/usuario/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"usuario",
+						"3"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
