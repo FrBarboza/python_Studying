@@ -1,7 +1,46 @@
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
 from flask_jwt_extended import jwt_required
+import sqlite3
 
+
+# path / hoteis?cidade=Rio de Janeiro&estrelas_min=4&diaria_max=400
+path_params = reqparse.RequestParser()
+path_params.add_argument('cidade', type=str)
+path_params.add_argument('estrelas_min', type=float)
+path_params.add_argument('estrelas_max', type=float)
+path_params.add_argument('diaria_min', type=float)
+path_params.add_argument('diaria_max', type=float)
+path_params.add_argument('limit', type=float)
+path_params.add_argument('offset', type=float)
+
+
+def normalize_path_params(cidade=None,
+                          estrelas_min = 0,
+                          estrelas_max = 5,
+                          diaria_min = 0,
+                          diaria_max = 10000,
+                          limit = 50,
+                          offset = 0,
+                          **data):
+    if cidade:
+        return {
+            'cidade': cidade,
+            'estrelas_min': estrelas_min,
+            'estrelas_max': estrelas_max,
+            'diaria_min': diaria_min,
+            'diaria_max': diaria_max,
+            'limit': limit,
+            'offset': offset
+        }
+    return {
+        'estrelas_min': estrelas_min,
+        'estrelas_max': estrelas_max,
+        'diaria_min': diaria_min,
+        'diaria_max': diaria_max,
+        'limit': limit,
+        'offset': offset
+    }
 
 # class Hoteis(Resource):
 #     def get(self):
@@ -9,8 +48,43 @@ from flask_jwt_extended import jwt_required
 
 class Hoteis(Resource):
     def get(self):
+        connection = sqlite3.connect('db.sqlite3')
+        cursor = connection.cursor()
+
+        value_data = path_params.parse_args()
+        # dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None}
+        valid_data = {key:value_data[key] for key in value_data if value_data[key] is not None}
+        parameters = normalize_path_params(**valid_data)
+
+        if not parameters.get('cidade'):
+            query = "SELECT * FROM hoteis \
+            WHERE (estrelas >= ? AND estrelas <= ?) \
+            AND (diaria >= ? AND diaria <= ?) LIMIT ? OFFSET ?"
+
+            values = tuple([parameters[key] for key in parameters])
+            result = cursor.execute(query, values)
+        else:
+            query = "SELECT * FROM hoteis \
+            WHERE (cidade = ?) \
+            AND (estrelas >= ? AND estrelas <= ?) \
+            AND (diaria >= ? AND diaria <= ?) LIMIT ? OFFSET ?"
+
+            values = tuple([parameters[key] for key in parameters])
+            result = cursor.execute(query, values)
+    	
+        hoteis = []
+        for hotel in result:
+            hoteis.append({
+            'hotel_id': hotel[0],
+            'nome': hotel[1],
+            'estrelas': hotel[2],
+            'diaria': hotel[3],
+            'cidade': hotel[4]
+        })
+
+        return {'hoteis': hoteis}
         # é um Select * from hoteis
-        return {'hoteis': [hoteis.json() for hoteis in HotelModel.query.all()]}
+        #return {'hoteis': [hoteis.json() for hoteis in HotelModel.query.all()]}
 
 class Hotel(Resource):
     argumentos = reqparse.RequestParser()
