@@ -71,7 +71,9 @@ git remote add origin git@github.com:xxxxxxxxx/yyyyyyyyyy.git
 ```
 git remote -v
 ```
-
+> Guia muito completo para utilização do GitHub
+[Guia prático de utilização do Github](https://rogerdudler.github.io/git-guide/index.pt_BR.html)
+```
 #### Configurar o DJANGO
 
 > ##### Criar projeto (para não criar estrutura use o . (ponto) 
